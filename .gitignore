@@ -3,3 +3,5 @@ Sandbox.ipynb
 /src/__pycache__/
 /.vscode/
 /.ipynb_checkpoints
+.DS_Store
+.gitignore
