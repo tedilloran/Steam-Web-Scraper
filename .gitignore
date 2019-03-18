@@ -1,0 +1,5 @@
+output.xlsx
+Sandbox.ipynb
+/src/__pycache__/
+/.vscode/
+/.ipynb_checkpoints

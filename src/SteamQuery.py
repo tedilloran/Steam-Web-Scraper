@@ -6,10 +6,10 @@ import requests
 import pandas as pd
 
 def queryByDeveloper(devName):
-    querySteam("https://store.steampowered.com/search/?developer={}&page=".format(devName))
+    return querySteam("https://store.steampowered.com/search/?developer={}&page=".format(devName))
 
 def queryByPublisher(pubName):
-    querySteam("https://store.steampowered.com/search/?publisher={}&page=".format(pubName))
+    return querySteam("https://store.steampowered.com/search/?publisher={}&page=".format(pubName))
 
 def getGameUrls(soup, queryURL):
     gameURLs = []
@@ -104,23 +104,23 @@ def querySteam(queryURL):
 
     dfInput = queryGamePages(getGameUrls(soup, queryURL))
 
-    df = pd.DataFrame(dfInput, columns = ["Title","Release Date", "Developer", "Publisher", "URL"])
+    return pd.DataFrame(dfInput, columns = ["Title","Release Date", "Developer", "Publisher", "URL"])
 
-    print("\033[94m Writing to 'output.xlsx'...")
 
-    try:
-        writer = pd.ExcelWriter('output.xlsx', engine='xlsxwriter')
-        df.to_excel(writer, sheet_name='Sheet1', index=False)
-        writer.save()
-    except:
-        print("\033[93m Something went wrong - {}".format(sys.exc_info()[0]))
-    else:
-        print("\033[92m Complete")
+    # try:
+    #     print("\033[94m Writing to 'output.xlsx'...")
+    #     writer = pd.ExcelWriter('output.xlsx', engine='xlsxwriter')
+    #     df.to_excel(writer, sheet_name='Sheet1', index=False)
+    #     writer.save()
+    # except:
+    #     print("\033[93m Something went wrong - {}".format(sys.exc_info()[0]))
+    # else:
+    #     print("\033[92m Complete")
  
 # Single Page - Clever Endeavour Games
 # 2 Pages - Valve
 # 8 Pages - Plug In Digital
-queryByPublisher("Valve")
+# queryByPublisher("Valve")
 
 # response = requests.get("https://store.steampowered.com/bundle/234/Portal_Bundle/")
 # soup = BeautifulSoup(response.text, 'html.parser')
