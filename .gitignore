@@ -1,6 +1,7 @@
 output.xlsx
 Sandbox.ipynb
 /src/__pycache__/
+/src/components/__pycache__/
 /.vscode/
 /.ipynb_checkpoints/
 .DS_Store
